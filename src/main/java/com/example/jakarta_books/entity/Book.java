@@ -5,12 +5,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "book")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 
 public class Book {
     @Id
