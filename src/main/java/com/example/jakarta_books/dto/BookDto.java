@@ -1,9 +1,11 @@
 package com.example.jakarta_books.dto;
 
 import com.example.jakarta_books.entity.Book;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
 
-public record BookDto(String title, String author, int publicationYear, String genre) {
-    public BookDto map(Book book) {
+public record BookDto(@NotEmpty String title, @NotEmpty String author, @Positive int publicationYear, String genre) {
+    public static BookDto map(Book book) {
         return new BookDto(book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getGenre());
     }
 
@@ -15,5 +17,4 @@ public record BookDto(String title, String author, int publicationYear, String g
         book.setGenre(bookDto.genre);
         return book;
     }
-
 }
