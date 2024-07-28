@@ -4,7 +4,6 @@ import com.example.jakarta_books.dto.BookDto;
 import com.example.jakarta_books.dto.Books;
 import com.example.jakarta_books.service.BookService;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
@@ -43,7 +42,6 @@ public class BookResource {
         return bookService.oneBook(id);
     }
 
-
     @POST
     public Response addBook(@Valid BookDto bookDto) {
         var book = bookService.addBook(bookDto);
@@ -77,7 +75,6 @@ public class BookResource {
     @Path("/{id}")
     public BookDto updateBook(@PathParam("id") @NotNull @Valid long id, @Valid BookDto bookDto) {
         return bookService.updateBook(id, bookDto);
-
     }
 
 }

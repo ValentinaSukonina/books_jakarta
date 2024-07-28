@@ -101,12 +101,5 @@ class BookDtoTest {
         var correctBookDto = BookDto.map(book);
         assertEquals(correctBookDto.getClass(), BookDto.class);
     }
-
-
-
-
-
-
-
-    }
+}
 
