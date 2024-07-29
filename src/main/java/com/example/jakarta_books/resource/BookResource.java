@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 
 import java.net.URI;
+import java.util.UUID;
 
 @Path("/books")
 @Produces(MediaType.APPLICATION_JSON)
@@ -38,7 +39,7 @@ public class BookResource {
 
     @GET
     @Path("/{id}")
-    public BookDto getBookById(@PathParam("id") long id) {
+    public BookDto getBookById(@PathParam("id") UUID id) {
         return bookService.oneBook(id);
     }
 
@@ -49,31 +50,16 @@ public class BookResource {
                 URI.create(uriInfo.getAbsolutePath().toString() + "/" + book.getId())).build();
     }
 
-//    @DELETE
-//    @Path("/{id}")
-//    public Response deleteBook(@PathParam("id") long id) {
-//        try {
-//            bookService.deleteBook(id);
-//        } catch (EntityNotFoundException e) {
-//            // Return 404 Not Found if the book does not exist
-//            return Response.status(Response.Status.NOT_FOUND)
-//                    .entity("Book with ID " + id + " not found")
-//                    .build();
-//        }
-//        // Return 204 No Content if the book was successfully deleted
-//        return Response.noContent().build();
-//    }
-
     @DELETE
     @Path("/{id}")
-    public Response deleteBook(@PathParam("id") long id) {
+    public Response deleteBook(@PathParam("id") UUID id) {
         bookService.deleteBook(id);
         return Response.noContent().build();
     }
 
     @PUT
     @Path("/{id}")
-    public BookDto updateBook(@PathParam("id") @NotNull @Valid long id, @Valid BookDto bookDto) {
+    public BookDto updateBook(@PathParam("id") @NotNull @Valid UUID id, @Valid BookDto bookDto) {
         return bookService.updateBook(id, bookDto);
     }
 

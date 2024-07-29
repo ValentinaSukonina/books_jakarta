@@ -5,6 +5,9 @@ import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 class BookTest {
     private Book book;
@@ -14,8 +17,9 @@ class BookTest {
     @Test
     @DisplayName("getId returns correct id")
     void getIdReturnsCorrectId() {
-        book.setId(1L);
-        assertEquals(1L, book.getId());
+        UUID id = UUID.randomUUID();
+        book.setId(id);
+        assertEquals(id, book.getId());
     }
 
     @Test

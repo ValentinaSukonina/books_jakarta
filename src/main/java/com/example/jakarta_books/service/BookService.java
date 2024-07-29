@@ -9,6 +9,8 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 
+import java.util.UUID;
+
 @ApplicationScoped
 public class BookService {
     BookRepository bookRepository;
@@ -26,7 +28,7 @@ public class BookService {
                 .stream().map(BookDto::map).toList());
     }
 
-    public BookDto oneBook(long id) {
+    public BookDto oneBook(UUID id) {
         Book book = bookRepository.findById(id);
         if (book == null) {
             throw new NotFoundException("Book with ID " + id + " not found");
@@ -38,18 +40,16 @@ public class BookService {
         return bookRepository.createNew(BookDto.map(bookDto));
     }
 
-    public Response deleteBook(long id) {
-        try {
-            bookRepository.deleteBook(id);
-        } catch (NotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Book with ID " + id + " not found")
-                    .build();
-        }
-        return Response.noContent().build();
+public Response deleteBook(UUID id) {
+    Book book = bookRepository.findById(id);
+    if (book == null) {
+        throw new NotFoundException("Book with ID " + id + " not found");
     }
+    bookRepository.deleteBook(id);
+    return Response.noContent().build();
+}
 
-    public BookDto updateBook(long id, BookDto bookDto) {
+    public BookDto updateBook(UUID id, BookDto bookDto) {
         Book existingBook = BookDto.map(oneBook(id));
         existingBook.setId(id);
         existingBook.setTitle(bookDto.title());

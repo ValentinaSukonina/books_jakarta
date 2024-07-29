@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "publicationYear": 1813,
+    "genre": "Classic"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "publicationYear": 1949,
+    "genre": "Dystopian"
+  },
+  {
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "publicationYear": 1851,
+    "genre": "Adventure"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "publicationYear": 1960,
+    "genre": "Classic"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "publicationYear": 1925,
+    "genre": "Classic"
+  },
+  {
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "publicationYear": 1869,
+    "genre": "Historical"
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "publicationYear": 1866,
+    "genre": "Philosophical"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "publicationYear": 1951,
+    "genre": "Classic"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "publicationYear": 1932,
+    "genre": "Dystopian"
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "publicationYear": 1847,
+    "genre": "Classic"
+  }
+]
+
+

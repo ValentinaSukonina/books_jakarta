@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookDtoTest {
@@ -28,6 +30,7 @@ class BookDtoTest {
         book.setGenre("genre");
 
         bookDto = new BookDto(
+                UUID.randomUUID(),
                 "title",
                 "author",
                 1999,
@@ -66,19 +69,21 @@ class BookDtoTest {
     @DisplayName("Empty title throws exception")
     void emptyTitleThrowsException() {
         BookDto invalidBookDto = new BookDto(
+                UUID.randomUUID(),
                 "",
                 "author",
                 1999,
                 "genre");
         var violations = validator.validate(invalidBookDto);
         assertEquals(1, violations.size());
-        assertEquals("must not be empty", violations.iterator().next().getMessage());
+        assertEquals("must not be blank", violations.iterator().next().getMessage());
     }
 
     @Test
     @DisplayName("Negative publication year throws exception")
     void negativePublicationYearThrowsException() {
         BookDto invalidBookDto = new BookDto(
+                UUID.randomUUID(),
                 "title",
                 "author",
                 -1999,
