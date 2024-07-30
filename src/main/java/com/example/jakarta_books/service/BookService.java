@@ -45,7 +45,7 @@ public Response deleteBook(UUID id) {
     if (book == null) {
         throw new NotFoundException("Book with ID " + id + " not found");
     }
-    bookRepository.deleteBook(id);
+    bookRepository.deleteById(id);
     return Response.noContent().build();
 }
 

@@ -32,6 +32,8 @@ class BookResourceTest {
     BookService bookService;
     Dispatcher dispatcher;
 
+
+
     @BeforeEach
     void setUp() {
         dispatcher = MockDispatcherFactory.createDispatcher();
@@ -55,7 +57,6 @@ class BookResourceTest {
     @Test
     @DisplayName("Return status 200 when successfully finding book by id with GET")
     void ReturnStatus200whenSuccessfullyCallFindBookByIdWithGet() throws Exception {
-        UUID id = UUID.randomUUID();
         BookDto bookDto = new BookDto(id, "1984", "George Orwell", 1949, "Dystopian");
 
         when(bookService.oneBook(id)).thenReturn(Response.ok(bookDto).build().readEntity(BookDto.class));
@@ -69,7 +70,6 @@ class BookResourceTest {
     @Test
     @DisplayName("Return status 404 when id not found with GET")
     void ReturnStatus404whenIdNotFoundWithGet() throws Exception {
-        UUID id = UUID.randomUUID();
 
         when(bookService.oneBook(id)).thenThrow(new NotFoundException());
         MockHttpRequest request = MockHttpRequest.get("/books/" + id);
@@ -108,10 +108,8 @@ void returnStatus201WhenCreated() throws Exception {
     }
 
     @Test
-    @DisplayName("Return status 404 when DELETE for none existing id")
-    void ReturnStatus404whenDELETEnoneExistingId() throws Exception {
-        UUID id = UUID.randomUUID();
-
+    @DisplayName("Return status 404 when DELETE used for none existing id")
+    void ReturnStatus404whenDeleteNoneExistingId() throws Exception {
         when(bookService.deleteBook(id)).thenThrow(new NotFoundException());
         MockHttpRequest request = MockHttpRequest.delete("/books/" + id);
         MockHttpResponse response = new MockHttpResponse();
@@ -123,7 +121,6 @@ void returnStatus201WhenCreated() throws Exception {
 @Test
 @DisplayName("Return status 200 when update person with PUT")
 void returnStatus200WhenUpdatePersonWithPut() throws Exception {
-    UUID id = UUID.randomUUID();
     BookDto bookDto = new BookDto(id, "1984", "George Orwell", 1949, "Dystopian");
 
     when(bookService.updateBook(any(UUID.class), any(BookDto.class)))

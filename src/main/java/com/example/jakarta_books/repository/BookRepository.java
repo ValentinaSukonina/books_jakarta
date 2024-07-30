@@ -33,7 +33,7 @@ public class BookRepository {
     }
 
     @Transactional
-    public void deleteBook(UUID id) {
+    public void deleteById(UUID id) {
         var book = findById(id);
         if (book == null) {
             throw new NotFoundException();

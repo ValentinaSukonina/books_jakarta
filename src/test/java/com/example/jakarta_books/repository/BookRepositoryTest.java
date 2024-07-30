@@ -75,7 +75,7 @@ class BookRepositoryTest {
         book.setId(id);
 
         when(entityManager.find(Book.class, id)).thenReturn(book);
-        bookRepository.deleteBook(id);
+        bookRepository.deleteById(id);
         verify(entityManager, times(1)).remove(book);
     }
 
@@ -83,7 +83,7 @@ class BookRepositoryTest {
     void deleteBookThrowNotFoundExceptionWhenBookDoesNotExist() {
         UUID id = UUID.randomUUID();
         when(entityManager.find(Book.class, id)).thenReturn(null);
-        assertThrows(NotFoundException.class, () -> bookRepository.deleteBook(id));
+        assertThrows(NotFoundException.class, () -> bookRepository.deleteById(id));
     }
 
     @Test
