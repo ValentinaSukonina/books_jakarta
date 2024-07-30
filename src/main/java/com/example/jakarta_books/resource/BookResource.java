@@ -33,13 +33,13 @@ public class BookResource {
     }
 
     @GET
-    public Books getAllBooks() {
+    public Books findAllBooks() {
         return bookService.allBooks();
     }
 
     @GET
     @Path("/{id}")
-    public BookDto getBookById(@PathParam("id") UUID id) {
+    public BookDto findBookById(@PathParam("id") UUID id) {
         return bookService.oneBook(id);
     }
 
