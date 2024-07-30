@@ -60,5 +60,10 @@
     "genre": "Classic"
   }
 ]
+GET, POST
+http://localhost:8080/api/books
+
+GET one, PUT, DELETE
+http://localhost:8080/api/books/{id}
 
 
