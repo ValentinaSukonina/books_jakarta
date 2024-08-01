@@ -46,6 +46,20 @@ class BookDtoTest {
         }
 
     @Test
+    void testValidBookDto(){
+        BookDto validBookDto = new BookDto(UUID.randomUUID(), "title", "author", 1999, "genre");
+        var violations = validator.validate(validBookDto);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
+    void testInvalidBookDto(){
+        BookDto invalidBookDto = new BookDto(UUID.randomUUID(), "", "",-1999, "genre");
+        var violations = validator.validate(invalidBookDto);
+        assertEquals(3, violations.size());
+    }
+
+    @Test
     @DisplayName("Dto contains correct entity fields after mapping")
     void dtoContainsCorrectEntityFieldsAfterMapping2() {
         BookDto correctBookDto = BookDto.map(book);

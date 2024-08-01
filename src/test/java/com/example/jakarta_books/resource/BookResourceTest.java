@@ -97,7 +97,7 @@ void returnStatus201WhenCreated() throws Exception {
 }
 
     @Test
-    @DisplayName("Return status 204 when DELETE successful")
+    @DisplayName("Return status 204 when DELETE is successful")
     void ReturnStatus204whenDeleteSuccessful() throws Exception {
 
         MockHttpRequest request = MockHttpRequest.delete("/books/" + id);

@@ -4,8 +4,11 @@ services:
   db:
     image: mysql:8.3.0
     environment:
-      MYSQL_DATABASE: test
-      MYSQL_ROOT_PASSWORD: password
+      # to run without .env variables
+#      MYSQL_DATABASE: test
+#      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
@@ -23,9 +26,13 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DB_CONNECTION_URL: jdbc:mysql://db:3306/test
-      DB_USERNAME: root
-      DB_PASSWORD: password
+# to run without .env variables
+#      DB_CONNECTION_URL: jdbc:mysql://db:3306/test
+#      DB_USERNAME: root
+#      DB_PASSWORD: password
+      DB_CONNECTION_URL: ${DB_CONNECTION_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
       db:
         condition: service_healthy
