@@ -41,5 +41,5 @@ jobs:
         run: |
           mvn -B verify \
               org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-              -Dsonar.projectKey=jakarta_books \
+              -Dsonar.projectKey=ValentinaSukonina_jakarta_books \
               -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
